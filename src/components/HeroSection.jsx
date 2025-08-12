@@ -1,68 +1,70 @@
-import { useState, useEffect } from 'react';
-import d1 from '../assets/d1.png';
-import d2 from '../assets/d2.png';
-import d3 from '../assets/d3.png';
-import d4 from '../assets/d4.png';
-import d5 from '../assets/d5.png';
-import d6 from '../assets/d6.png';
-import d7 from '../assets/d7.png';
-import d8 from '../assets/d8.png';
-import d26 from '../assets/d26.png';
-import d27 from '../assets/d27.png';
-import weblogo from '../assets/d10.png';
+import SplitText from "./SplitText";
+import RippleGrid from "./RippleGrid";
 
 export default function HeroSection() {
-    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const handleAnimationComplete = () => {
+    console.log("All letters have animated!");
+  };
 
-    // Array of imported images for the slideshow
-    const images = [d1, d2, d3, d4, d5, d6, d7,d8, d26, d27];
-
-    // Automatically update current image index every 3 seconds
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 3000);
-
-        return () => clearInterval(interval); // Clear interval on unmount
-    }, [images.length]);
-
-    return (
-        <section className="relative flex flex-col ma md:flex-row items-center mb-20 justify-center min-h-screen-0 bg-background text-primary pb-12 ">
-            <div className="w-full md:w-1/2 p-4 sm:p-6 md:p-8">
-  <h1 className="mb-4 flex justify-center">
-    <img src={weblogo} alt="logo" className="logo-home " />
-  </h1>
-  <div>
-    <p className="text-2xl sm:text-3xl md:text-4xl mb-4 font-bold text-transparent bg-clip-text bg-gradient-to-r from-black to-purple-600 font-montserrat typewriter-text text-center">
-      Where Quality is Priority
-    </p>
-  </div>
-  <div className="flex justify-center">
-    <a
-      href="#"
-      className="bg-primary text-primary-foreground hover:bg-primary/80 py-2 px-4 sm:py-3 sm:px-6 rounded-lg transition-colors duration-300"
+  return (
+    <section
+      style={{
+        position: "relative",
+        width: "100%",
+        height: "600px",
+        overflow: "hidden",
+      }}
     >
-      Shop Now
-    </a>
-  </div>
-</div>
+      {/* Ripple background */}
+      <div
+        style={{
+          position: "absolute",
+          inset: 0, // fill parent
+          zIndex: 0, // behind everything
+        }}
+      >
+        <RippleGrid
+          enableRainbow={true}
+          gridColor="#ffffff"
+          rippleIntensity={0.05}
+          gridSize={10}
+          gridThickness={15}
+          mouseInteraction={true}
+          mouseInteractionRadius={1.2}
+          opacity={0.8}
+        />
+      </div>
 
-
-          
-
-            {/* Slideshow images */}
-            <div className="relative w-full h-64 md:w-1/2">
-                {images.map((src, index) => (
-                    <img
-                        key={index}
-                        src={src}
-                        alt={`Slide ${index + 1}`}
-                        className={`absolute top-0 left-0  pb-8 object-cover transition-opacity duration-500 ${
-                currentImageIndex === index ? 'opacity-100' : 'opacity-0'
-            }`}
-                    />
-                ))}
-            </div>
-        </section>
-    );
+      {/* Foreground Hero Content */}
+      <div
+        style={{
+          position: "relative",
+          zIndex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100%",
+          color: "white",
+        }}
+      >
+        <SplitText
+          text={`Hello, my name is
+  Panashe Arthur Mhonde`}
+          className="text-8xl font-semibold text-center"
+          delay={100}
+          duration={0.6}
+          zIndex={6}
+          ease="power3.out"
+          splitType="chars"
+          from={{ opacity: 0, y: 40 }}
+          to={{ opacity: 1, y: 0 }}
+          threshold={0.1}
+          rootMargin="-100px"
+          textAlign="center"
+          onLetterAnimationComplete={handleAnimationComplete}
+        />
+      </div>
+    </section>
+  );
 }
