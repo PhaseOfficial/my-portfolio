@@ -20,7 +20,7 @@ export default function HeroSection() {
         style={{
           position: "absolute",
           inset: 0, // fill parent
-          zIndex: 0, // behind everything
+          zIndex: 2, // behind everything
         }}
       >
         <RippleGrid
@@ -49,21 +49,21 @@ export default function HeroSection() {
         }}
       >
         <SplitText
-          text={`Hello, my name is
-  Panashe Arthur Mhonde`}
-          className="text-8xl font-semibold text-center"
-          delay={100}
-          duration={0.6}
-          zIndex={6}
-          ease="power3.out"
-          splitType="chars"
-          from={{ opacity: 0, y: 40 }}
-          to={{ opacity: 1, y: 0 }}
-          threshold={0.1}
-          rootMargin="-100px"
-          textAlign="center"
-          onLetterAnimationComplete={handleAnimationComplete}
-        />
+  text={`The name is \nArthur`}
+  className="text-5xl font-black font-montserrat text-center md:text-8xl whitespace-pre-line"
+  delay={100}
+  duration={0.6}
+  zIndex={6}
+  ease="power3.out"
+  splitType="chars"
+  from={{ opacity: 0, y: 40 }}
+  to={{ opacity: 1, y: 0 }}
+  threshold={0.1}
+  rootMargin="-100px"
+  textAlign="center"
+  onLetterAnimationComplete={handleAnimationComplete}
+/>
+
       </div>
     </section>
   );

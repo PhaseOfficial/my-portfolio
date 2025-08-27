@@ -42,7 +42,7 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden mt-2 flex flex-col space-y-2 bg-gray-800 p-4 rounded-lg shadow-lg text-white">
+                <div className="md:hidden mt-2 flex flex-col space-y-2 bg-gray-800 p-4 rounded-lg shadow-lg text-white ">
                     <Link to="/Projects" className="hover:text-white">Projects</Link>
                     <Link to="/Resume" className="hover:text-white">Resume</Link>
                     <Link to="/Contact" className="hover:text-white">Contact</Link>
