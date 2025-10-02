@@ -1,6 +1,5 @@
 #root {
   margin: 0 auto;
-  text-align: center;
 }
 
 .logo {
@@ -81,4 +80,14 @@
 canvas {
   width: 100%;
   height: auto;
+}
+
+.gradual-blur {
+  pointer-events: none;
+}
+.gradual-blur-parent {
+  overflow: hidden;
+}
+.gradual-blur-inner {
+  pointer-events: none;
 }

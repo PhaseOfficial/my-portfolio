@@ -49,7 +49,7 @@ export default function HeroSection() {
         }}
       >
         <SplitText
-  text={`The name is \nArthur`}
+  text={`Hi, I'm Arthur`}
   className="text-5xl font-black font-montserrat text-center md:text-8xl whitespace-pre-line"
   delay={100}
   duration={0.6}

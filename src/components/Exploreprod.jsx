@@ -1,49 +1,26 @@
 import BlurText from "./BlurText";
-import LetterGlitch from './LetterGlitch';
+import RotatingText from './RotatingText'
 const Exploreprod = () => {
-  const handleAnimationComplete = () => {
-  console.log('Animation completed!');
-};
   return (
     <section
-      style={{
-        position: "relative",
-        width: "100%",
-        height: "100px",
-        overflow: "hidden",
-      }}
     >
-    <div
-        style={{
-          position: "absolute",
-          inset: 0, // fill parent
-          zIndex: 0, // behind everything
-        }}
-      >
-    <LetterGlitch
-  glitchSpeed={50}
-  centerVignette={true}
-  outerVignette={false}
-  smooth={true}
+    <div      >
+  
+  
+<RotatingText
+  texts={['React', 'Bits', 'Is', 'Cool!']}
+  mainClassName="px-2 sm:px-2 md:px-3 bg-cyan-300 text-black overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+  staggerFrom={"last"}
+  initial={{ y: "100%" }}
+  animate={{ y: 0 }}
+  exit={{ y: "-120%" }}
+  staggerDuration={0.025}
+  splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+  rotationInterval={2000}
 />
-</div>
-  <div
-    style={{
-      position: "absolute",
-      inset: 0, // fill parent
-      zIndex: 1, // behind everything
-    }}
-  >
-    <BlurText
-  text="I am a Data Scientist"
-  delay={150}
-  animateBy="words"
-  onAnimationComplete={handleAnimationComplete}
-  className="text-5xl font-black font-montserrat text-center md:text-8xl whitespace-pre-line"
-  rootMargin="-100px"
-  textAlign="center"
-  direction="top"
-/>
+
+
   </div>
   </section>
   )

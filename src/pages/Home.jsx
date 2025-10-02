@@ -5,6 +5,7 @@ import '../App.css';
 import Contactus from '../components/Contactus';
 import Footer from '../components/footer';
 import Companies from '../components/companies';
+import Offer from '../components/Offer';
 //import Testimonials from '../components/Testimonials';
 
 export default function Home() {
@@ -12,7 +13,8 @@ export default function Home() {
         <div>
             <Navbar />
             
-            <HeroSection className="mt-20"/>
+            <HeroSection className=""/>
+            <Offer className=""/>
             <Explore className="mt-20"/>
             <Companies className="mt-20"/>
             <Contactus className="mt-20" id="contact"/>
