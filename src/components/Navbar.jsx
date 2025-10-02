@@ -20,7 +20,7 @@ export default function Navbar() {
             <div className="container mx-auto flex items-center justify-between">
                 {/* Logo */}
                 <h1 className="text-2xl font-black font-montserrat-bold">
-                   Phase_RCS
+                   Panashe Arthur Mhonde
                 </h1>
 
                 {/* Desktop Links */}
