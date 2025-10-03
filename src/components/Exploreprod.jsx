@@ -20,7 +20,7 @@ const Exploreprod = () => {
       </div>
 
       {/* Foreground content */}
-      <div className="relative z-10 text-center">
+      <div className="relative z-1 text-center">
         <BlurText
           text="I excel at being a"
           className="text-4xl sm:text-6xl md:text-8xl font-bold text-white mb-6"
