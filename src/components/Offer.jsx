@@ -3,7 +3,7 @@ import CurvedLoop from './CurvedLoop'
 
 const Offer = () => {
   return (
-    <section className="mb-20">
+    <section className="">
       <div>
   <CurvedLoop 
   marqueeText="This ✦ Is ✦ My ✦ Portfolio ✦ Enjoy ✦"

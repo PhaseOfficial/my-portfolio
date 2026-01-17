@@ -1,10 +1,11 @@
 import React from 'react';
 import ScrollFloat from './ScrollFloat';
+
 // Add more logos as needed
 
 const LogoMarquee = () => {
   return (
-    <div className='mt-10  bg-black text-white flex items-center justify-center overflow-hidden relative font-montserrat-bold font-black text-4xl sm:text-6xl md:text-8xl'>
+    <div className='text-white flex items-center justify-center overflow-hidden relative font-montserrat-bold font-black text-4xl sm:text-6xl md:text-8xl'>
    <ScrollFloat
   animationDuration={1}
   ease='back.inOut(2)'
@@ -14,6 +15,8 @@ const LogoMarquee = () => {
 >
 You can Trust Me with 
 </ScrollFloat>
+
+
     </div>
   );
 };

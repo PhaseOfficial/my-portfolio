@@ -4,7 +4,7 @@ import Particles from './Particles';
 
 const Exploreprod = () => {
   return (
-    <section className="relative flex items-center justify-center min-h-screen overflow-hidden bg-black">
+    <section className="relative flex items-center justify-center min-h-screen overflow-hidden">
       {/* Particles background */}
       <div className="absolute inset-0">
         <Particles
@@ -27,7 +27,7 @@ const Exploreprod = () => {
         />
         <RotatingText
           texts={['Data Scientist', 'Graphic Designer', 'Developer', 'Digital Marketer!']}
-          mainClassName="px-4 sm:px-6 md:px-8 bg-gradient-to-r from-purple-700 via-pink-500 to-red-500 text-white text-4xl sm:text-6xl md:text-8xl overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-lg inline-block font-black font-montserrat-bold"
+          mainClassName="px-4 sm:px-6 md:px-8 bg-gradient-to-r from-purple-700 via-pink-500 to-red-500 text-white text-6xl sm:text-7xl md:text-8xl overflow-hidden py-1 sm:py-2 md:py-3 justify-center rounded-lg inline-block font-black font-montserrat-bold"
           staggerFrom="last"
           initial={{ y: '100%' }}
           animate={{ y: 0 }}

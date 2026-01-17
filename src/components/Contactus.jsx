@@ -54,8 +54,8 @@ const Contactus = () => {
               </li>
               <li className="flex items-center mb-2 text-gray-600">
                 <MdEmail className="mr-2" />
-                <a href="mailto:redcupseriespvtltd@gmail.com" className="hover:underline">
-                  redcupseriespvtltd@gmail.com
+                <a href="mailto:panashearthurmhonde@gmail.com" className="hover:underline">
+                  panashearthurmhonde@gmail.com
                 </a>
               </li>
               <li className="flex items-center text-gray-600">

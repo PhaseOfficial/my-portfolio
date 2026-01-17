@@ -91,3 +91,18 @@ canvas {
 .gradual-blur-inner {
   pointer-events: none;
 }
+html, body {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+.card {
+ width: 1000px;
+ margin: 0 auto;
+ height: 300px;
+ border-radius: 30px;
+ background: #212121;
+ box-shadow: 15px 15px 30px rgb(25, 25, 25),
+             -15px -15px 30px rgb(60, 60, 60);
+}
+
