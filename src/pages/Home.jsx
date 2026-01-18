@@ -3,7 +3,8 @@ import { FaGithub, FaBrain, FaLaptopCode, FaLanguage, FaGraduationCap, FaAward, 
 import { MdAnalytics, MdEngineering } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 import ProjectsSection from '../components/ProjectsSection';
-
+import FullStackProjects from '../components/FullStackProjects';
+import GraphicDesignProjects from '../components/GraphicDesignProjects';
 // COMPONENTS
 import Navbar from '../components/Navbar';
 import Explore from '../components/Exploreprod';
@@ -278,6 +279,8 @@ export default function Home() {
       <Navbar />
       <AboutMeSection />
       <ProjectsSection />
+      <FullStackProjects />
+      <GraphicDesignProjects />
       <Contactus className="mt-20" id="contact" />
       <Footer className="mt-20" />
     </div>
