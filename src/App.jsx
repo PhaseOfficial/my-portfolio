@@ -1,14 +1,14 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import ComingSoon from "./pages/comingsoon";
-import './App.css';
-import ContactUs from "./pages/Contact";
-import Games from "./pages/Games";
+// import About from "./pages/About";
+// import Services from "./pages/Services";
+// import ComingSoon from "./pages/comingsoon";
+// import './App.css';
+// import ContactUs from "./pages/Contact";
+// import Games from "./pages/Games";
 import TagManager from 'react-gtm-module';
-import StorePage from "./pages/StorePage";
+// import StorePage from "./pages/StorePage";
 
 const tagManagerArgs = {
   gtmId: 'GTM-PKXK7LPV', // Replace with your GTM ID
@@ -23,12 +23,12 @@ const App = () => {
 
       <Routes >
         <Route path="/" element={<Home />} />
-        <Route path="/About" element={<About />} />
+        {/* <Route path="/About" element={<About />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/Comingsoon" element={<ComingSoon />} />
         <Route path="/Contact" element={<ContactUs />} />
         <Route path="/Games" element={<Games />} />
-        <Route path="/Store" element={<StorePage />} />
+        <Route path="/Store" element={<StorePage />} /> */}
       </Routes>
     </div>
   );

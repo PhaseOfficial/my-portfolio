@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { FaGithub, FaBrain, FaLaptopCode, FaLanguage, FaGraduationCap, FaAward, FaUsers, FaRobot } from 'react-icons/fa';
 import { MdAnalytics, MdEngineering } from 'react-icons/md';
 import { IoLogoWhatsapp } from 'react-icons/io5';
+import ProjectsSection from '../components/ProjectsSection';
 
 // COMPONENTS
 import Navbar from '../components/Navbar';
@@ -276,6 +277,7 @@ export default function Home() {
     <div className="pt-20 bg-[#0a0a09]">
       <Navbar />
       <AboutMeSection />
+      <ProjectsSection />
       <Contactus className="mt-20" id="contact" />
       <Footer className="mt-20" />
     </div>
