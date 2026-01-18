@@ -9,12 +9,15 @@ import Explore from '../components/Exploreprod';
 import Contactus from '../components/Contactus';
 import Footer from '../components/footer';
 import Offer from '../components/Offer';
+import { MorphingText } from "../components/MorphingText"; 
+import ScrollExpandMedia from '../components/ScrollExpandMedia'; 
 
 // ASSETS
 import zchpcLogo from '../assets/zchpc-logo.png';
 import uzLogo from '../assets/University_of_Zimbabwe_LOGO.png';
 import profileHero from '../assets/background.png';
 import profileImage from '../assets/pamhonde.png';
+import heroVideo from '../assets/webvid.mp4'; 
 import '../App.css';
 
 // Import the GlowingEffect
@@ -25,10 +28,12 @@ const cardVariants = {
   visible: (i) => ({ opacity: 1, y: 0, transition: { delay: i * 0.2, duration: 0.6 } }),
 };
 
-const heroVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.8 } },
-};
+// Define your text strings
+const myTexts = [
+  "Who is Panashe?",
+  "Who is Arthur?",
+  "Who is Phase_rcs?",
+];
 
 // --- Reusable Glow Card Component ---
 const GlowCard = ({ children, className, customIndex }) => {
@@ -60,66 +65,95 @@ const GlowCard = ({ children, className, customIndex }) => {
 
 const AboutMeSection = () => {
   return (
-    <div className="min-h-screen text-gray-200" style={{ backgroundColor: '#0a0a09' }}>
-      {/* Hero Section */}
-      <motion.section
-        className="relative w-full h-[80vh] flex items-center justify-center bg-cover bg-center"
-        style={{ backgroundImage: `url(${profileHero})` }}
-        initial="hidden"
-        animate="visible"
-        variants={heroVariants}
-      >
-        <div className="absolute inset-0 bg-black/70" />
-        <div className="relative text-center text-white px-6 z-10">
-          <div className="mb-6">
-            <img
-              src={profileImage}
-              alt="Panashe Arthur Mhonde"
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full mx-auto mb-4 border-4 border-white shadow-lg object-cover"
-            />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">
+    <ScrollExpandMedia
+      mediaType="video"
+      mediaSrc={heroVideo} 
+      bgImageSrc={profileHero} 
+      title="Panashe Arthur Mhonde" 
+      date="Data Scientist & Full Stack Dev"
+      scrollToExpand="Scroll to Explore"
+      textBlend={true}
+    >
+      
+      {/* --- REVEALED CONTENT SECTION --- */}
+      
+      {/* 1. Profile Header (Avatar + Name + Socials) */}
+      <div className="flex flex-col items-center text-center text-white px-6 mb-16 mt-8">
+        
+        {/* Avatar */}
+        <div className="mb-6 relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+          <img
+            src={profileImage}
+            alt="Panashe Arthur Mhonde"
+            className="relative w-32 h-32 md:w-48 md:h-48 rounded-full border-4 border-black shadow-2xl object-cover"
+          />
+        </div>
+
+        {/* NAME & ROLE */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400 mb-2">
             Panashe Arthur Mhonde
           </h1>
-          <p className="text-lg md:text-xl font-medium mb-4">
-            Data Scientist & Analyst | AI Researcher | Full-Stack Developer
+          <p className="text-lg md:text-xl text-gray-400 font-medium mb-8">
+            Data Scientist | AI Researcher | Full-Stack Developer
           </p>
-
-          <div className="flex flex-wrap justify-center gap-4 text-gray-300 text-sm md:text-base">
-            <a href="https://wa.me/+263788147289" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2">
-              <IoLogoWhatsapp /> +263 788 147 289
-            </a>
-            <a
-              href="https://github.com/PhaseOfficial"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 hover:text-red-400"
-            >
-              <FaGithub /> PhaseOfficial
-            </a>
-          </div>
+        </motion.div>
+        
+        {/* Social Links */}
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          <a 
+            href="https://wa.me/+263788147289" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-green-500/50 hover:text-green-400 transition-all duration-300 backdrop-blur-sm"
+          >
+            <IoLogoWhatsapp className="text-xl" /> 
+            <span className="font-medium">+263 788 147 289</span>
+          </a>
+          <a
+            href="https://github.com/PhaseOfficial"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 px-6 py-3 bg-white/5 border border-white/10 rounded-full hover:bg-white/10 hover:border-purple-500/50 hover:text-purple-400 transition-all duration-300 backdrop-blur-sm"
+          >
+            <FaGithub className="text-xl" /> 
+            <span className="font-medium">PhaseOfficial</span>
+          </a>
         </div>
-      </motion.section>
 
-      <Offer className="" />
-      <Explore className="" />
+        {/* Offer & Explore Components */}
+        <div className="w-full max-w-7xl mx-auto space-y-20">
+            <Offer className="" />
+            <Explore className="" />
+        </div>
+      </div>
 
-      {/* Info Cards Section */}
-      <section className="py-16 px-6 md:px-12 lg:px-24">
-        <h2 className="text-5xl font-bold text-center mb-12 text-gray-100">
-          Who is Panashe?
-        </h2>
+      {/* 2. Info Cards Section */}
+      <section className="px-4 md:px-12 lg:px-24 pb-20 max-w-[1600px] mx-auto">
+        
+        {/* Morphing Header */}
+        <div className="mb-16">
+            <MorphingText 
+            texts={myTexts} 
+            className="text-4xl md:text-6xl font-bold text-center text-gray-100 drop-shadow-lg" 
+            />
+        </div>
 
-        <div className="grid gap-8 md:grid-cols-3">
+        <div className="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
           
           {/* Profile Card */}
           <GlowCard customIndex={0}>
             <div>
-              <h3 className="text-xl font-semibold text-center mb-3 text-gray-100">Profile</h3>
-              <p className="text-gray-300 text-center leading-relaxed">
-                Energetic and ambitious Data Scientist & Statistician, passionate about solving real-world problems with AI and Data Analytics.
+              <h3 className="text-xl font-bold text-center mb-4 text-white uppercase tracking-wider">Profile</h3>
+              <p className="text-gray-300 text-center leading-relaxed text-sm md:text-base">
+                Energetic and ambitious <span className="text-blue-400 font-semibold">Data Scientist & Statistician</span>, passionate about solving real-world problems with AI and Data Analytics.
                 Skilled full-stack developer with experience in API integrations, backend development, database management, and SEO.
-                Proficient graphic designer with a keen eye for detail.
               </p>
             </div>
           </GlowCard>
@@ -131,23 +165,23 @@ const AboutMeSection = () => {
                 <img
                   src={zchpcLogo}
                   alt="ZCHPC Logo"
-                  className="h-16 mx-auto mb-4 object-contain"
+                  className="h-12 mx-auto mb-4 object-contain opacity-90"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-center mb-4 text-gray-100">Work Experience</h3>
+              <h3 className="text-xl font-bold text-center mb-6 text-white uppercase tracking-wider">Work Experience</h3>
               <div className="space-y-6 text-center text-gray-300 text-sm flex-grow">
                 <div>
-                  <p className="font-bold text-base text-white">Resident Researcher (Big Data & AI)</p>
-                  <p className="text-gray-500 text-xs mb-1">ZCHPC | Jul 2024 – Apr 2025</p>
-                  <p className="text-gray-400">
-                    Researched AI and Big Data integration for national-scale projects. Built predictive models using Python & TensorFlow.
+                  <p className="font-bold text-base text-blue-300">Resident Researcher</p>
+                  <p className="text-gray-500 text-xs mb-2 font-mono">ZCHPC | Jul 2024 – Apr 2025</p>
+                  <p className="text-gray-400 leading-snug">
+                    Researched AI & Big Data integration. Built predictive models using Python & TensorFlow.
                   </p>
                 </div>
-                <div className="border-t border-gray-800 pt-4">
-                  <p className="font-bold text-base text-white">Big Data Analyst Intern</p>
-                  <p className="text-gray-500 text-xs mb-1">ZCHPC | Jul 2023 – Jul 2024</p>
-                  <p className="text-gray-400">
-                    Analyzed large datasets with Python & SQL, deployed models on HPC systems, and contributed to dashboards.
+                <div className="border-t border-white/10 pt-4">
+                  <p className="font-bold text-base text-blue-300">Big Data Analyst Intern</p>
+                  <p className="text-gray-500 text-xs mb-2 font-mono">ZCHPC | Jul 2023 – Jul 2024</p>
+                  <p className="text-gray-400 leading-snug">
+                    Analyzed large datasets, deployed HPC models, and built dashboards.
                   </p>
                 </div>
               </div>
@@ -157,55 +191,51 @@ const AboutMeSection = () => {
           {/* Skills */}
           <GlowCard customIndex={2}>
             <div>
-              <h3 className="text-xl font-semibold text-center mb-6 text-gray-100">Technical Skills</h3>
-              <ul className="text-gray-300 space-y-4">
-                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg"><MdAnalytics className="text-blue-400 text-xl" /> <span>Data Analysis (Python, R, SQL)</span></li>
-                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg"><FaBrain className="text-pink-400 text-xl" /> <span>Machine Learning & LLM Training</span></li>
-                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg"><FaLaptopCode className="text-green-400 text-xl" /> <span>Full-Stack Web Development</span></li>
-                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg"><FaRobot className="text-yellow-400 text-xl" /> <span>Prompt Engineering</span></li>
-                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg"><MdEngineering className="text-orange-400 text-xl" /> <span>Data Engineering</span></li>
-                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg"><FaUsers className="text-purple-400 text-xl" /> <span>Communication & Teamwork</span></li>
+              <h3 className="text-xl font-bold text-center mb-6 text-white uppercase tracking-wider">Technical Skills</h3>
+              <ul className="text-gray-300 space-y-3 text-sm">
+                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg hover:bg-white/10 transition"><MdAnalytics className="text-blue-400 text-xl" /> <span>Data Analysis (Python, R, SQL)</span></li>
+                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg hover:bg-white/10 transition"><FaBrain className="text-pink-400 text-xl" /> <span>Machine Learning & LLM Training</span></li>
+                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg hover:bg-white/10 transition"><FaLaptopCode className="text-green-400 text-xl" /> <span>Full-Stack Web Development</span></li>
+                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg hover:bg-white/10 transition"><FaRobot className="text-yellow-400 text-xl" /> <span>Prompt Engineering</span></li>
+                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg hover:bg-white/10 transition"><MdEngineering className="text-orange-400 text-xl" /> <span>Data Engineering</span></li>
+                <li className="flex items-center gap-3 bg-white/5 p-2 rounded-lg hover:bg-white/10 transition"><FaUsers className="text-purple-400 text-xl" /> <span>Communication & Teamwork</span></li>
               </ul>
             </div>
           </GlowCard>
-        </div>
 
-        {/* Second Row */}
-        <div className="grid gap-8 md:grid-cols-3 mt-8">
-          
           {/* Languages */}
           <GlowCard customIndex={3}>
             <div>
-              <h3 className="text-xl font-semibold text-center mb-6 text-gray-100">
+              <h3 className="text-xl font-bold text-center mb-6 text-white uppercase tracking-wider">
                 <FaLanguage className="inline mr-2" /> Languages
               </h3>
-              <ul className="text-gray-300 space-y-3 px-4">
-                <li className="flex justify-between border-b border-gray-800 pb-2"><span>English</span> <span className="text-yellow-500">★★★★★</span></li>
-                <li className="flex justify-between border-b border-gray-800 pb-2"><span>Shona</span> <span className="text-yellow-500">★★★★★</span></li>
-                <li className="flex justify-between border-b border-gray-800 pb-2"><span>Sign Language</span> <span className="text-yellow-500/50">★★★✩✩</span></li>
-                <li className="flex justify-between pb-2"><span>Chinese</span> <span className="text-yellow-500/50">★★★✩✩</span></li>
+              <ul className="text-gray-300 space-y-4 px-2">
+                <li className="flex justify-between items-center border-b border-white/10 pb-2"><span>English</span> <span className="text-yellow-400 text-xs tracking-widest">★★★★★</span></li>
+                <li className="flex justify-between items-center border-b border-white/10 pb-2"><span>Shona</span> <span className="text-yellow-400 text-xs tracking-widest">★★★★★</span></li>
+                <li className="flex justify-between items-center border-b border-white/10 pb-2"><span>Sign Language</span> <span className="text-yellow-400/50 text-xs tracking-widest">★★★✩✩</span></li>
+                <li className="flex justify-between items-center pb-2"><span>Chinese</span> <span className="text-yellow-400/50 text-xs tracking-widest">★★★✩✩</span></li>
               </ul>
             </div>
           </GlowCard>
 
           {/* Education */}
           <GlowCard customIndex={4}>
-            <div className="flex flex-col items-center">
-              <div className="text-center mb-4 bg-white/10 p-4 rounded-xl">
+            <div className="flex flex-col items-center justify-center h-full">
+              <div className="text-center mb-6 bg-white/5 p-4 rounded-2xl border border-white/5">
                 <img
                   src={uzLogo}
                   alt="UZ Logo"
-                  className="h-16 object-contain"
+                  className="h-20 object-contain"
                 />
               </div>
-              <h3 className="text-xl font-semibold text-center mb-2 text-gray-100">
+              <h3 className="text-xl font-bold text-center mb-2 text-white uppercase tracking-wider">
                 <FaGraduationCap className="inline mr-2" /> Education
               </h3>
-              <div className="text-center mt-4">
-                <p className="text-lg font-bold text-white">BSc (Hons) in Data Science and Systems</p>
-                <p className="text-gray-400 mt-2">University of Zimbabwe</p>
-                <p className="text-sm text-gray-500">2021 – 2025</p>
-                <div className="mt-4 inline-block px-4 py-1 rounded-full bg-green-900/30 border border-green-500/30 text-green-400 text-sm">
+              <div className="text-center mt-4 space-y-2">
+                <p className="text-lg font-bold text-white leading-tight">BSc (Hons) Data Science & Systems</p>
+                <p className="text-gray-400">University of Zimbabwe</p>
+                <p className="text-sm text-gray-500 font-mono">2021 – 2025</p>
+                <div className="mt-4 inline-block px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-semibold">
                   Upper Second Class (2.1)
                 </div>
               </div>
@@ -215,21 +245,21 @@ const AboutMeSection = () => {
           {/* Achievements */}
           <GlowCard customIndex={5}>
             <div>
-              <h3 className="text-xl font-semibold text-center mb-6 text-gray-100">
+              <h3 className="text-xl font-bold text-center mb-6 text-white uppercase tracking-wider">
                 <FaAward className="inline mr-2" /> Achievements
               </h3>
               <ul className="text-gray-300 space-y-4">
-                <li className="bg-gradient-to-r from-gray-900 to-gray-800 p-3 rounded-lg border-l-4 border-yellow-500">
-                  <span className="block font-bold text-white">Distinction</span>
-                  <span className="text-sm">Shona NLP Thesis</span>
+                <li className="bg-gradient-to-r from-white/5 to-transparent p-4 rounded-xl border-l-4 border-yellow-500 hover:bg-white/10 transition">
+                  <span className="block font-bold text-white text-lg">Distinction</span>
+                  <span className="text-sm text-gray-400">Shona NLP Thesis</span>
                 </li>
-                <li className="bg-gradient-to-r from-gray-900 to-gray-800 p-3 rounded-lg border-l-4 border-blue-500">
-                  <span className="block font-bold text-white">5th Place</span>
-                  <span className="text-sm">Zindi Maize Disease Detection</span>
+                <li className="bg-gradient-to-r from-white/5 to-transparent p-4 rounded-xl border-l-4 border-blue-500 hover:bg-white/10 transition">
+                  <span className="block font-bold text-white text-lg">5th Place</span>
+                  <span className="text-sm text-gray-400">Zindi Maize Disease Detection</span>
                 </li>
-                <li className="bg-gradient-to-r from-gray-900 to-gray-800 p-3 rounded-lg border-l-4 border-green-500">
-                  <span className="block font-bold text-white">Certified</span>
-                  <span className="text-sm">AI & Big Data (ZCHPC)</span>
+                <li className="bg-gradient-to-r from-white/5 to-transparent p-4 rounded-xl border-l-4 border-green-500 hover:bg-white/10 transition">
+                  <span className="block font-bold text-white text-lg">Certified</span>
+                  <span className="text-sm text-gray-400">AI & Big Data (ZCHPC)</span>
                 </li>
               </ul>
             </div>
@@ -237,18 +267,15 @@ const AboutMeSection = () => {
 
         </div>
       </section>
-    </div>
+    </ScrollExpandMedia>
   );
 };
 
 export default function Home() {
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-[#0a0a09]">
       <Navbar />
       <AboutMeSection />
-      {/* <Companies className=""/> */}
-      {/* <Trust className=""/> */}
-      {/* <Carreer className=""/> */}
       <Contactus className="mt-20" id="contact" />
       <Footer className="mt-20" />
     </div>
